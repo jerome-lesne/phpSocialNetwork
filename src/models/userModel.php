@@ -1,12 +1,17 @@
 <?php
 
-class User
+class User extends UserRipository
 {
     private $firstName;
     private $name;
     private $mail;
     private $password;
-
+    /**
+     * @param mixed $firstName
+     * @param mixed $name
+     * @param mixed $mail
+     * @param mixed $password
+     */
     public function __construct($firstName, $name, $mail, $password)
     {
         $this->firstName = $firstName;
@@ -15,16 +20,23 @@ class User
         $this->password = $password;
     }
 
-    public function insertIntoDb($db)
+    public function getFirstName()
     {
-        $sql = $db -> prepare(
-            "INSERT INTO user(firstname, ,name, mail, password)
-            VALUES (:firstName, :familyName, :mail, :pass)"
-        );
-        $sql->bindParam(':firstName', $this->firstName);
-        $sql->bindParam(':familyName', $this->name);
-        $sql->bindParam(':mail', $this->mail);
-        $sql->bindParam(':pass', $this->password);
-        $sql -> execute();
+        return $this->firstName;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
     }
 }
