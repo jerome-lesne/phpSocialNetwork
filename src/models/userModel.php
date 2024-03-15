@@ -39,4 +39,5 @@ class User extends UserRipository
     {
         return $this->password;
     }
+
 }

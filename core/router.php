@@ -14,9 +14,21 @@ class Router
 
                 if (method_exists($controllerObject, "index")) {
                     $controllerObject->index();
+                } else {
+                    throw new Exception("No index mothod for" . $controller);
                 }
             } else {
-                throw new Exception("No index mothod for" . $controller);
+                echo "error 404, this page does not exist";
+            }
+        } else {
+            if (class_exists("LoginController")) {
+                $controllerObject = new LoginController();
+
+                if (method_exists($controllerObject, "index")) {
+                    $controllerObject->index();
+                }
+            } else {
+                throw new Exception("No index mothod for LoginController");
             }
         }
 
