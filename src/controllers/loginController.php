@@ -14,7 +14,7 @@ class LoginController extends Controller
                     echo "wrong password";
                 } else {
                     $_SESSION["currentUser"] = $userInfos["id"];
-                    $this->redirect("/main");
+                    $this->redirect("/");
                 }
             } catch (PDOException $e) {
                 echo $e->getMessage();

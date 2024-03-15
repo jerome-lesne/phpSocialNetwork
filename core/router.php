@@ -6,31 +6,71 @@ class Router
     {
         $url = $_SERVER['REQUEST_URI'];
 
-        if ($url !== "/") {
-            $controller = ucfirst(explode("/", $url)[1]) . "Controller";
-
-            if (class_exists($controller)) {
-                $controllerObject = new $controller();
-
-                if (method_exists($controllerObject, "index")) {
-                    $controllerObject->index();
+        switch ($url) {
+            case '/':
+                if (isset($_SESSION["currentUser"])) {
+                    if (User::getUserById($_SESSION["currentUser"])["id"]) {
+                        if (class_exists("MainController")) {
+                            $controllerObject = new MainController();
+                            if (method_exists($controllerObject, "index")) {
+                                $controllerObject->index();
+                            }
+                        }
+                    }
                 } else {
-                    throw new Exception("No index mothod for" . $controller);
+                    header("Location:/login");
                 }
-            } else {
+                break;
+            case '/login':
+                if (class_exists("LoginController")) {
+                    $controllerObject = new LoginController();
+                    if (method_exists($controllerObject, "index")) {
+                        $controllerObject->index();
+                    }
+                } else {
+                    throw new Exception("No index mothod for LoginController");
+                }
+                break;
+            case '/register':
+                if (class_exists("RegisterController")) {
+                    $controllerObject = new RegisterController();
+                    if (method_exists($controllerObject, "index")) {
+                        $controllerObject->index();
+                    }
+                } else {
+                    throw new Exception("No index mothod for LoginController");
+                }
+                break;
+            default:
                 echo "error 404, this page does not exist";
-            }
-        } else {
-            if (class_exists("LoginController")) {
-                $controllerObject = new LoginController();
-
-                if (method_exists($controllerObject, "index")) {
-                    $controllerObject->index();
-                }
-            } else {
-                throw new Exception("No index mothod for LoginController");
-            }
+                break;
         }
+
+        // if ($url !== "/") {
+        //     $controller = ucfirst(explode("/", $url)[1]) . "Controller";
+        //
+        //     if (class_exists($controller)) {
+        //         $controllerObject = new $controller();
+        //
+        //         if (method_exists($controllerObject, "index")) {
+        //             $controllerObject->index();
+        //         } else {
+        //             throw new Exception("No index mothod for" . $controller);
+        //         }
+        //     } else {
+        //         echo "error 404, this page does not exist";
+        //     }
+        // } else {
+        //     if (class_exists("LoginController")) {
+        //         $controllerObject = new LoginController();
+        //
+        //         if (method_exists($controllerObject, "index")) {
+        //             $controllerObject->index();
+        //         }
+        //     } else {
+        //         throw new Exception("No index mothod for LoginController");
+        //     }
+        // }
 
 
     }
