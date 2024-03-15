@@ -16,6 +16,28 @@ class MainController extends Controller
             }
             Db::disconnect();
         }
+        if (isset($_POST["delete"])) {
+            try {
+                Db::getInstance()->beginTransaction();
+                PostRipository::deletePost($_POST["delete"]);
+                Db::getInstance()->commit();
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                Db::getInstance()->rollBack();
+            }
+            Db::disconnect();
+        }
+        if (isset($_POST["submitUpdate"])) {
+            try {
+                Db::getInstance()->beginTransaction();
+                PostRipository::updatePost($_POST["submitUpdate"], $_POST["title"], $_POST["content"]);
+                Db::getInstance()->commit();
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+                Db::getInstance()->rollBack();
+            }
+            Db::disconnect();
+        }
         require "../views/main.php";
     }
 }

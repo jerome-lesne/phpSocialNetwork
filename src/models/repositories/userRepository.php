@@ -21,4 +21,5 @@ abstract class UserRipository extends Db
     {
         return self::request("SELECT * FROM users WHERE id = '$id'")->fetch(PDO::FETCH_ASSOC);
     }
+
 }

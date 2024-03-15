@@ -13,8 +13,16 @@ abstract class PostRipository extends Db
     }
     public static function getAllPosts()
     {
-        return self::request("SELECT * FROM posts p LEFT JOIN users u ON p.user_id = u.id")->fetchAll(PDO::FETCH_ASSOC);
+        return self::request("SELECT p.*, u.firstName, u.name FROM posts p LEFT JOIN users u ON p.user_id = u.id")->fetchAll(PDO::FETCH_ASSOC);
 
+    }
+    public static function deletePost($id)
+    {
+        return self::request("DELETE FROM posts WHERE id='$id'");
+    }
+    public static function updatePost($id, $title, $content)
+    {
+        return self::request("UPDATE posts SET title = '$title', message = '$content' WHERE id = '$id'");
     }
 
 }
