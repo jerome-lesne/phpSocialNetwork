@@ -38,6 +38,10 @@ class MainController extends Controller
             }
             Db::disconnect();
         }
+        if (isset($_POST["disconnect"])) {
+            $_SESSION["currentUser"] = null;
+            $this->redirect("/login");
+        }
         require "../views/main.php";
     }
 }

@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>The Social Network</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
         <h1>The Social Network</h1>
+        <form method="POST">
+            <p>Hello <span><?php echo User::getUserById($_SESSION["currentUser"])["firstName"]?></span></p>
+            <button type="submit" name="disconnect">Disconnect</button>
+        </form>
         <section>
             <h2>Posts time line</h2>
             <form action="/" method="post">
@@ -17,7 +21,7 @@
                         if($_POST["update"] == $post["id"]) {
                             ?>
                             <div class="updatePost">
-                                <h3>UPDATE POST :</h3>
+                    <h3>UPDATE POST : <span><?=$post["title"]?></span></h3>
                                 <div>
                                     <label for="title">Post Title</label>
                                     <input type="text" name="title" id="title" value="" />
@@ -47,7 +51,7 @@
                 <?php
 
                 }
-                ?>
+            ?>
             </form>
         </section>
         <section>
