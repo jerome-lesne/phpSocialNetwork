@@ -12,10 +12,20 @@
             <div>
                 <label for="mail">E-Mail</label>
                 <input type="text" name="mail" id="mail" value="" />
+                <?php
+                if (isset($loginMailError)) {
+                    echo "<p class='errorMsg'>$loginMailError</p>";
+                }
+                ?>
             </div>
             <div>
                 <label for="password">Password</label>
                 <input type="text" name="password" id="password" value="" />
+                <?php
+                if (isset($loginPasswordError)) {
+                    echo "<p class='errorMsg'>$loginPasswordError</p>";
+                }
+                ?>
             </div>
             <div>
                 <input type="submit" name="submit" value="submit" />

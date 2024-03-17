@@ -4,7 +4,6 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        require "../views/register.php";
         if (isset($_POST["submit"])) {
             try {
                 Db::getInstance()->beginTransaction();
@@ -12,11 +11,17 @@ class RegisterController extends Controller
                 $user->insertIntoDb($user);
                 Db::getInstance()->commit();
                 $this->redirect("/login");
-            } catch (PDOException $e) {
-                echo $e->getMessage();
+            } catch (PDOException | \Exception $e) {
+                $errorCode = $e->getCode();
+                if ($errorCode = 10) {
+                    $mailError = $e->getMessage();
+                } else {
+                    echo $e->getMessage();
+                }
                 Db::getInstance()->rollBack();
             }
             Db::disconnect();
         }
+        require "../views/register.php";
     }
 }

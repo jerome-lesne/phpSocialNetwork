@@ -4,6 +4,10 @@ body {
     padding: 0;
 }
 
+.errorMsg {
+    color: red;
+}
+
 h1 {
     text-align: center;
     margin-top: 20px;

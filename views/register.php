@@ -11,19 +11,24 @@
         <form method="post">
             <div>
                 <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" value="" />
+                <input type="text" name="firstName" id="firstName" value="" required/>
             </div>
             <div>
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" value="" />
+                <input type="text" name="name" id="name" value="" required/>
             </div>
             <div>
                 <label for="mail">E-Mail</label>
-                <input type="text" name="mail" id="mail" value="" />
+                <input type="text" name="mail" id="mail" value="" required/>
+                <?php
+                if (isset($mailError)) {
+                    echo "<p class='errorMsg'>$mailError</p>";
+                }
+                ?>
             </div>
             <div>
                 <label for="password">Password</label>
-                <input type="text" name="password" id="password" value="" />
+                <input type="text" name="password" id="password" value="" required/>
             </div>
             <div>
                 <input type="submit" name="submit" value="submit" />

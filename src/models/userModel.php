@@ -16,7 +16,7 @@ class User extends UserRipository
     {
         $this->firstName = $firstName;
         $this->name = $name;
-        $this->mail = $mail;
+        $this->setMail($mail);
         $this->password = $password;
     }
 
@@ -38,6 +38,15 @@ class User extends UserRipository
     public function getPassword()
     {
         return $this->password;
+    }
+    public function setMail($eMail)
+    {
+        $mailRegex = '/^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9_\.\-]+\.[a-zA-Z0-9_\.\-]{2,255}/';
+        if(!preg_match($mailRegex, $eMail)) {
+            throw new Exception("Error Wrong Syntax on Email", 10); // code 10 will be to check if its an email error
+        } else {
+            $this->mail = $eMail;
+        }
     }
 
 }
