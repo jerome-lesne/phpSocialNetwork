@@ -42,7 +42,7 @@ class Router
                 }
                 break;
             default:
-                echo "error 404, this page does not exist";
+                require('../views/error_404.php');
                 break;
         }
 
