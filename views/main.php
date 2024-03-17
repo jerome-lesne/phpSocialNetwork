@@ -48,8 +48,12 @@
                     <p><?= $post["message"]?></p>
                     <p>Author : <?= $post["firstName"]?> <?= $post["name"]?></p>
                     <div>
+                <?php
+                    if ($_SESSION["currentUser"] == $post["user_id"]) {
+                        ?>
                         <button type="submit" name="update" value="<?= $post['id']?>">Update</button>
                         <button type="submit" name="delete" value="<?= $post['id']?>">Delete</button>
+                <?php } ?>
                     </div>
                 </div>
                 <?php
