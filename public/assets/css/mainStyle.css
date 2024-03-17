@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0% 20%;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#userInfo {
+    text-align: right;
+    margin-right: 20px;
+}
+
+#userInfo p {
+    margin-bottom: 10px;
+}
+
+#userInfo span {
+    font-style: italic;
+    color: #007bff;
+}
+
+#postsfeed {
+    margin-top: 20px;
+}
+
+.postContainer {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.postContainer h3 {
+    margin-top: 0;
+}
+
+.postContainer p {
+    margin-bottom: 10px;
+}
+
+.postContainer div {
+    text-align: right;
+}
+
+#messagePost {
+    margin-top: 20px;
+}
+
+#postInputs {
+    margin-bottom: 10px;
+}
+
+#postInputs label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#postInputs input[type="text"],
+#postInputs textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#subBtnContainer {
+    text-align: right;
+}
+
+button[type="submit"] {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.updatePost {
+    border: 1px solid #007bff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.updatePost h3 {
+    color: #007bff;
+}
+
+.updatePost div {
+    margin-top: 10px;
+}
+
+#title,
+#content {
+    width: calc(100% - 10px);
+    padding: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>Register</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="./assets/css/registerStyle.css" rel="stylesheet">
     </head>
     <body>
         <h1>Registration</h1>
@@ -28,6 +28,7 @@
             <div>
                 <input type="submit" name="submit" value="submit" />
             </div>
+            <a href="/login">Back to Login</a>
         </form>
     </body>
 </html>
